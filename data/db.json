@@ -1,0 +1,19 @@
+{
+    "users": [{
+            "nom": "Wane",
+            "prenom": "Birane Baila",
+            "login": "joueur@gmail.com",
+            "password": "joueur",
+            "role": "ROLE_JOUEUR",
+            "score": 15
+        },
+        {
+            "nom": "faye",
+            "prenom": "Aissatou",
+            "login": "admin@gmail.com",
+            "password": "admin",
+            "role": "ROLE_ADMIN",
+            "score": 0
+        }
+    ]
+}
