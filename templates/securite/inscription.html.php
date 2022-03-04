@@ -26,9 +26,10 @@
     <input type="password" name="confirm">
 
 <label for="Avatar"></label>   
- <input type="file" name="" id="" accept=".jpg .jpeg .png" name="avatar">
 
- <button >Creer Compte</button>
+ <input type="file" id=""  name="avatar">
+
+ <button >Créer Compte</button>
 
 </div>
 </form>
