@@ -1,3 +1,4 @@
+
 <?php
             //-----------------------Démarrage de la session--------------------------------//
 if(session_status()==PHP_SESSION_NONE){
@@ -13,13 +14,22 @@ require_once dirname(dirname(__FILE__))."/config/orm.php";
             //-----------------------Inclusion des roles-------------------------------//
 
 require_once dirname(dirname(__FILE__))."/config/role.php";
-
-            //-----------------------Inclusion du router-------------------------------//
-
-require_once dirname(dirname(__FILE__))."/config/router.php";
-
             //-----------------------Inclusion du validator-------------------------------//
 
 require_once dirname(dirname(__FILE__))."/config/validator.php";
+
+
+require_once(PATH_VIEWS."include/header.html.php");
+
+
+       //-----------------------Chargement du router-------------------------------//
+require_once dirname(dirname(__FILE__))."/config/router.php";
+require_once(PATH_VIEWS."include/footer.html.php");
+            
+
+          
+?>
+
+
 
 
