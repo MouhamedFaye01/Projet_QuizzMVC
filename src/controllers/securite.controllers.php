@@ -5,11 +5,15 @@
 require_once (PATH_SRC."Models" .DIRECTORY_SEPARATOR. 'user.model.php');
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
+    
+
         if(isset($_REQUEST['action'])){
             if($_REQUEST['action']=="connexion"){
+                
                 $login=$_REQUEST['login'];
                 $password=$_REQUEST['password'];
-                 connexion($login,$password);
+               
+                connexion($login,$password);
             }elseif ($_REQUEST['action']=="inscription") {
                 $nom = $_REQUEST['nom'];
                 $prenom = $_REQUEST['prenom'];
@@ -46,6 +50,8 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 ////------------------------------------Traitement des Requetes GET-----------------------------------------//
 
 function connexion(string $login,string $password):void{
+ 
+    
         
         $error=[];
         //-----------coté login------------//
@@ -65,6 +71,7 @@ function connexion(string $login,string $password):void{
         //--------------utilisateur existant---------------//
 
                $_SESSION[KEY_USER_CONNECT]=$user;
+
                require_once(PATH_VIEWS."user/accueil.html.php");
    
              

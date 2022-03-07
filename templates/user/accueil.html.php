@@ -1,7 +1,7 @@
 
 
 
-    <div class="container">*
+    <div class="container">
 
         <div class="admin-dashboard">
 
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="right"> 
-                    <h1>Bienvenue <?= $_SESSION[KEY_USER_CONNECT]['nom'] ." ". $_SESSION[KEY_USER_CONNECT]['prenom']?></h1>
+                     
                     <?= isset($affiche) ? $affiche : '' ?>
               
 </div> 

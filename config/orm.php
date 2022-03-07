@@ -1,5 +1,5 @@
 <?php
-//-------------------------------------Recuperation des donnees du fichier---------------------------------------//
+//-------------------------------------Recupération des données du fichier---------------------------------------//
 
 function find_data(string $key):array{
     $dataJson=file_get_contents(PATH_DB);
@@ -13,14 +13,13 @@ function save_data(string $key ,array $data):array{
 }
 
 
-
-
+//--------------------------Recupération des données du fichier et décodage en tableau---------------------------//
 
 function array_to_json(array $newUser, $key){ 
 
-    $dataJason=file_get_contents(PATH_DB);//recup fichier
+    $dataJason=file_get_contents(PATH_DB);//------------récupération du fichier------------------//
 
-    $data=json_decode($dataJason,true);  //decode en tableau
+    $data=json_decode($dataJason,true);  //-------------décodage en tableau---------------------//
 
     $data[$key][] = $newUser;
     $final_data=json_encode($data);

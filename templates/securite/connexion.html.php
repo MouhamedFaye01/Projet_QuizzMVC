@@ -33,7 +33,7 @@
                 
             <!-- //!press on submit button -->
             <div class="last-control">
-                <button id="connect" type="submit" hidden >Connexion</button>
+                <button id="connect" type="submit" disabled >Connexion</button>
                 <a href="<?= WEB_ROOT."?controller=securite&action=inscription" ?>">S'inscrire pour jouer </a>
             </div>
         </div>        
