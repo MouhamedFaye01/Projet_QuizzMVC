@@ -1,6 +1,12 @@
+    const login = document.getElementById('login')
+    const password = document.getElementById('password')
+    const boutton = document.getElementById('connect')
+
+
+
     //------------------------------- Test de la validité de l'email------------------------------------//
 
-    function checkEmail(input) {
+    function checkEmail(input) { //Tester si l'email est valide :  javascript : valid email
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (re.test(input.value.trim().toLowerCase())) {
@@ -10,6 +16,19 @@
         }
     }
 
+    function showErrorConnect(input, message) { //Afficher les messages d'erreur
+        const formControl = input.parentElement;
+        formControl.className = 'forms-group errorConnect';
+        const small = formControl.querySelector('small');
+        small.innerText = message;
+    }
+    //
+    function showSuccessConnect(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'forms-group successConnect';
+        const small = formControl.querySelector('small');
+        small.innerText = "";
+    }
     //------------------------------- Test de la validité du password------------------------------------//
 
     function isValidPassword(input) {
@@ -26,32 +45,37 @@
         return validity;
     }
 
-    //------------------------------- Récupération des éléments------------------------------------//
 
-    const login = document.getElementById('login')
-    const password = document.getElementById('password')
-    const boutton = document.getElementById('connect')
 
     //----------------------- Évènement d'écoute d'un bon email et password-----------------------------//
+    if (login) {
+        login.addEventListener('input', () => {
 
-    login.addEventListener('input', () => {
-        if (!checkEmail(login)) {
-            login.style.border = "solid red 1px"
-        } else {
-            login.style.border = "solid green 1px"
+            if (!checkEmail(login)) {
 
-        }
-        password.addEventListener('input', () => {
-            if (!isValidPassword(password)) {
-                password.style.border = "solid red 1px"
+                showErrorConnect(login, 'Erreur email')
+                password.setAttribute('disabled', 'disabled')
             } else {
-                password.style.border = "solid green 1px"
-                boutton.removeAttribute('disabled')
+                showSuccessConnect(login)
+                password.removeAttribute('disabled')
+
+                password.addEventListener('input', () => {
+                    if (!isValidPassword(password)) {
+                        showErrorConnect(password, 'Erreur mot de passe')
+
+                    } else {
+                        showSuccessConnect(password)
+
+                        boutton.removeAttribute('disabled')
+
+                    }
+
+
+                })
 
             }
 
 
+
         })
-
-
-    })
+    }

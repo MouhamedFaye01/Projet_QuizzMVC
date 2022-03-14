@@ -1,33 +1,26 @@
-
+<?php  $nbrPage = ceil(count($joueurs)/7)?>
                 <h2 class="h2">Liste des joueurs par score</h2>
                     <div class="haut">
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Nom</td>
-                                    <td>Prénom</td>
-                                    <td>Score</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    foreach ($joueurs as $joueur) { ?>
-                                        <tr>
-                                            <td><?= $joueur['nom'] ?></td>
-                                            <td><?= $joueur['prenom'] ?></td>
-                                            <td><?= $joueur['score'] ?></td>
-                                        </tr>
-                                  <?php  }
-                                ?>
-                            </tbody>
-                        </table>
+                    <?php
+                        if (isset($_GET['next'])) {
+                            $page = $_GET['next'];
+                            pagination($page,$joueurs);
+                        }else{
+                            pagination(1,$joueurs);
+
+                        }
+                    ?>
 
                        
                     </div>
                     
-                    <button class="btn" id="next-btn">Suivant</button>
-                    
+                    <?php
+                        for ($i=1; $i < $nbrPage; $i++) { ?>
+                            <a href="<?= WEB_ROOT."?controller=user&action=liste.joueur&next=$i" ?>" class="btn" id="next-btn"><?= $i ?></a>
+                       <?php }
+                    ?>
+                
                 </div>
 
                 </div>

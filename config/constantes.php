@@ -41,3 +41,6 @@ define ("ROLE_JOUEUR","ROLE_JOUEUR");
 define ('ROLE_ADMIN','ROLE_ADMIN');
 
 
+define ('PATH_UPLOAD',ROOT. "public". DIRECTORY_SEPARATOR. "uploads/");
+
+

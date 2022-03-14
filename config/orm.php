@@ -26,3 +26,6 @@ function array_to_json(array $newUser, $key){
     file_put_contents(PATH_DB , $final_data);
 
 }
+
+
+

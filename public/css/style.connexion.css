@@ -1,211 +1,3 @@
-/* * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    background-image: url(../img/img-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-
-/* 
-.image1 {
-    width: 100%;
-    height: 100%;
-}
-
-.formulaire {
-    position: absolute;
-    height: 50%;
-    width: 30%;
-} */
-
-
-/* .form { */
-
-
-/* border: 2px solid red; */
-
-
-/* height: 100%;
-    width: 100%;
-} */
-
-
-/* .un {
-    height: 20%; */
-
-
-/* border: 2px solid red; */
-
-
-/* background-color: #51bfd0;
-    display: flex;
-    color: white;
-} */
-
-
-/* h2 {
-    width: 90%;
-    padding: 2%;
-}
-
-.image2 {
-    width: 5%;
-    height: 25%;
-    margin: auto;
-    color: white;
-}
-
-.deux {
-    height: 50%;
-    display: flex;
-    flex-direction: column; */
-
-
-/* border: 2px solid red; */
-
-
-/* justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-.small {
-    padding-left: 5%;
-}
-
-input {
-    font-size: x-large; */
-
-
-/* background-color: rgb(247, 242, 242); */
-
-
-/* padding-left: 4%;
-    border: none; */
-
-
-/* border-radius: 5%; */
-
-
-/* width: 90%;
-    height: 65%;
-    outline: none;
-    background-color: rgb(240, 240, 240);
-} */
-
-
-/* .trois { */
-
-
-/* border: 2px solid red; */
-
-
-/* background-color: white;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-
-/* .trois1 {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 90%; */
-
-
-/* border: 2px solid red; */
-
-
-/* border: 2px solid red; */
-
-
-/* }
-
-.b1 {
-    width: 35%;
-    height: 45%;
-    font-size: x-large;
-    color: white;
-    background-color: #51bfd0; */
-
-
-/* border-color: black; */
-
-
-/* cursor: pointer;
-}
-
-.b1:hover {
-    background-color: #51bfd0;
-    color: white;
-    font-size: x-large;
-}
-
-a {
-    width: 55%;
-    height: 45%;
-    font-size: x-large;
-    display: flex;
-    align-items: center;
-    color: gray;
-    text-align: center;
-    background-color: white;
-    border-color: black;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.b2:hover { */
-
-
-/* background-color: #51bfd0; */
-
-
-/* color: white; */
-
-
-/* font-size: x-large;
-}
-
-.champ {
-    position: absolute;
-    width: 5%;
-    right: 7%;
-    margin: 3%;
-}
-
-.icone {
-    width: 100%;
-    height: 40%;
-    display: flex; */
-
-
-/* justify-content: center; */
-
-
-/* flex-direction: column;
-    align-items: center;
-}
-
-.small {
-    margin: 2%;
-} */
-
 :root {
     --color-of-header: #052426;
     --color-of-gray: #b9b9b9;
@@ -227,17 +19,14 @@ body {
 }
 
 .content-form {
-    /* border: 2px red solid; */
     width: 100vw;
     height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
 }
 
 .connexion-form {
-    /* border: 2px red solid; */
     width: 35vw;
     height: 60vh;
     background-color: #fff;
@@ -267,7 +56,6 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--color-of-gray);
-    /* border: 1pt solid var(--color-of-gray); */
     background-color: var(--color-of-whitesmoke);
     margin: 2.5%;
     height: 90px;
@@ -300,7 +88,6 @@ body {
 .input-connexion {
     background-color: var(--color-of-whitesmoke);
     border: none;
-    /* border-left: 1px solid var(--color-of-gray); */
     outline: none;
     text-indent: 5%;
     outline: none;
@@ -338,11 +125,6 @@ body {
     cursor: pointer;
 }
 
-
-/* .last-control #connect:hover {
-    background-color: green;
-} */
-
 .last-control #connect:active {
     background-color: var(--color-of-orange);
 }
@@ -360,4 +142,29 @@ body {
     text-align: center;
     font-size: 1.2em;
     color: red;
+}
+
+.para {
+    color: red;
+    font-size: 100%;
+    text-indent: 3%
+}
+
+.para1 {
+    color: red;
+    text-align: center
+}
+
+.small1 {
+    color: red;
+    text-indent: 1%
+}
+
+.forms-group.errorConnect {
+    border: solid red 1px;
+    color: red;
+}
+
+.forms-group.successConnect {
+    border: solid green 1px;
 }

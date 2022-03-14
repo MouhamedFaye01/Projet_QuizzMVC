@@ -21,7 +21,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 $password = $_REQUEST['password'];
                 $confirm = $_REQUEST['confirm'];
                 $role = $_REQUEST['role'];
-                $avatar = $_REQUEST['avatar'];
+                $avatar = $_FILES['avatar'];
+         
                 $score = $_REQUEST['score'];
 
                inscrire($nom,$prenom,$login,$password,$confirm,$role,$score,$avatar);
@@ -48,6 +49,7 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
         }
 }
 ////------------------------------------Traitement des Requetes GET-----------------------------------------//
+
 
 function connexion(string $login,string $password):void{
  
@@ -84,7 +86,7 @@ function connexion(string $login,string $password):void{
                exit();
             }
           
-       }else{
+        }else{
         
         //--------------Erreur de validation---------------//
 
@@ -112,44 +114,95 @@ function logout(){
 
 
          function inscrire(string $nom,string $prenom,string $login,string $password,string $password1,string $role, string $score,$avatar):void{
+
+            $errors = [];
+         champ_obligatoire('nom', $nom,$errors,"Le nom obligatoire");
+         champ_obligatoire('prenom', $prenom,$errors,"Le prenom est obligatoire");
+         champ_obligatoire('login', $login,$errors,"l'adresse email est obligatoire");
+         champ_obligatoire('password1', $password1,$errors,"Mot de passe requis  ");
         
-    
-            $errors=[];
-            champ_obligatoire('nom',$nom,$errors);
-            champ_obligatoire('prenom',$prenom,$errors);
-            champ_obligatoire('login',$login,$errors);
+                //-----------------------vaidité email et mot de passe----------------------------//
+        
             if(count($errors)==0){
-                valid_email('login',$login,$errors);
+                valid_email('login',$login,$errors,"Invalide email");
+
             }
-            champ_obligatoire('password',$password,$errors);
+            champ_obligatoire('password',$password,$errors,"Le mot de passe est obligatoire");
             if ($password != $password1) {
                 $errors['confirm'] = "Les mots de passes doivent etre identiques !";
             }
-        
-        
+                //----------------------Email existant----------------------------//
+            find_user_login($login);
+            if(find_user_login($login)){
+                $errors['error_login']= "Email existant";             
+            }
+            if($avatar['name']==""){
+                $errors['error_format']="veuillez choisir une photo";
+            }
+           
+           
             if(count($errors)==0){
-                // die('ok');
+
+                $picName = explode("@",$login,-1);//-------------extraire avant @-----------------// 
+                $picName[0] .= $role;//--------------concaténation---------------//
+
+                $extension = explode('.',$avatar['name']);
+                $avatar['name'] = $picName[0].'.'.$extension[1];//-----------renommer une image------------//
+             
+                
                 $newUser=[
                     "nom" => $nom,
                     "prenom" => $prenom,
                     "login" => $login,
                     "password" => $password,
                     "role" => $role,
-                    "photo" => $avatar,
+                    "photo" => $avatar["name"],
                     "score"=> $score
                 ];
+                
+                //-----------------Amener les images dans le dossier uploads--------------------//
+
+                if (upload_file($avatar)) {
+             
+                    array_to_json($newUser,"users");
+                    header("location:".WEB_ROOT."?controller=securite&action=connexion" ); 
+                }else{
+                 
+                $errors['error_format']="verifier le format";
+                $_SESSION[KEY_ERRORS]=$errors;
+                if (is_connect()) {
+
+                    header("location:".WEB_ROOT."?controller=user&action=creation.admin" ); 
+                }else {
+
+                    header("location:".WEB_ROOT."?controller=securite&action=inscription" ); 
+                    
+                }
+                }
+
+                //----------------Enregistrement d'un nouveau joueur et redirection------------//
         
-                array_to_json($newUser,"users");
-                header("location:".WEB_ROOT."?controller=securite" ); 
         
+              
+               
+               
+            
+
+            
         
             }else{
-                $_SESSION[KEY_ERRORS]=$errors;  
-                header("location:".WEB_ROOT."?controller=securite&action=register" ); 
+         
+                $_SESSION[KEY_ERRORS]=$errors; 
+                if (is_connect()) {
+                    header("location:".WEB_ROOT."?controller=user&action=creation.admin" ); 
+                }else {
+           
+                    header("location:".WEB_ROOT."?controller=securite&action=inscription" ); 
+                    
+                } 
                
         
             }
-        
         
         
         
